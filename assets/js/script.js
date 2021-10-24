@@ -165,6 +165,7 @@ function addInitials(event) {
     //store initials and high scores in local storage
     localStorage.setItem("initialsEl.value-storage", initialsEl.value)
     localStorage.setItem("userScore-storage", userScore)
+    //retrieves high score and initials from storage and adds to list
     highScoreList.appendChild(highScoreEl)
     highScoreEl.textContent = (localStorage.getItem("initialsEl.value-storage")) + ": " + (localStorage.getItem("userScore-storage"))
 }

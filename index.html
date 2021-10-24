@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+</head>
+
+<body>
+    <div id = "high-score">
+        <h2>High Score</h2>
+        <div id = high-score-list>
+            <li><span ></span></li>
+        </div>
+    </div>
+
+    <div id = "timer">    
+    </div>
+    
+    <div id = "intro">
+        <h1>JavaScript Coding Quiz</h1>
+        <p>Instructions</p>
+        <button type = "button" id = start-button>Start</button>
+    </div>
+
+    <div id = "quiz">
+        <div id = "question">
+        </div>
+        <ul id = "choices">
+            <li> <button type = "button" id = "choice0" ></button></li>
+            <li> <button type = "button" id = "choice1" ></button></li>
+            <li> <button type = "button" id = "choice2" ></button></li>
+            <li> <button type = "button" id = "choice3" ></button></li>
+        </ul>
+    </div>
+
+    <div id = "end">
+        <h2>End of quiz</h2>
+        <p>Your score is <span id = "score"></span></p>
+        <p>enter initials: <input type="text" id ="initials"/></p>
+            <button id = "submit">Submit</button> 
+    </div>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

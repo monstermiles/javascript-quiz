@@ -16,7 +16,8 @@ var submitButton = document.querySelector("#submit")
 var secondsLeft = 30
 var questionIndex = 0
 var userScore = 0;
-
+var scoreEl = document.querySelector("#score")
+var highScoreList = document.querySelector("#high-score-list")
 //array of questions 
 var quiz = [
     {
@@ -144,20 +145,26 @@ function nextQuestion(event) {
 function endGame() {
     quizEnd.setAttribute("style", "display:normal")   
     quizEl.setAttribute("style", "display:none")
+    scoreEl.textContent = userScore
+
 }
-
-
-
 
 
 submitButton.addEventListener("click", addInitials)
 submitButton.addEventListener("click", addScore)
+///try making the high score list in the html and just creating and appending the lis
+
+
+//add initials to the high scores list by appending an li 
+
+var highScoreEl = document.createElement("li")
 
 function addInitials(event) {
     event.preventDefault()
     console.log(initialsEl.value)
+    highScoreList.appendChild(highScoreEl)
+    highScoreEl.textContent = (initialsEl.value) + ": " + (userScore)
 }
-
 
 function addScore() {
 

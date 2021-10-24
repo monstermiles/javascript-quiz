@@ -13,7 +13,7 @@ var choice3 = document.querySelector("#choice3")
 var score = document.querySelector("#score")
 var initialsEl = document.getElementById("initials")
 var submitButton = document.querySelector("#submit")
-var secondsLeft = 5
+var secondsLeft = 30
 var questionIndex = 0
 var userScore = 0;
 
@@ -47,9 +47,7 @@ var quiz = [
     }
 
 ];
-for(var i = 0; i<=quiz.length; i++) {
-    // do something each time
-}
+
 
 //hide end div  and quiz div
 quizEnd.setAttribute("style", "display:none")
@@ -109,8 +107,8 @@ choice0.addEventListener("click", nextQuestion)
 choice1.addEventListener("click", nextQuestion)
 choice2.addEventListener("click", nextQuestion)
 choice3.addEventListener("click", nextQuestion)
-//move to next question
 
+//move to next question
 function nextQuestion(event) {
     event.preventDefault()
     console.log("grabbing the value of the button", event.target.value)
@@ -120,7 +118,10 @@ function nextQuestion(event) {
         questionIndex++
         if (questionIndex > 4) {
             // end game
-            alert('end ofquiz')
+            quizEnd.setAttribute("style", "display:normal")   
+            quizEl.setAttribute("style", "display:none")
+            timerEl = setAttribute("style", "display:none")
+            
         } else {
             displayQuestion()
             displayChoices()
@@ -131,7 +132,10 @@ function nextQuestion(event) {
         questionIndex++
         if (questionIndex > 4) {
             // end game
-            alert('end of quiz')
+            quizEnd.setAttribute("style", "display:normal")   
+            quizEl.setAttribute("style", "display:none")
+            timerEl = setAttribute("style", "display:none")
+            
         } else {
             displayQuestion()
             displayChoices()

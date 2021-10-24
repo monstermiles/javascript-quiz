@@ -74,7 +74,7 @@ function startQuiz() {
 function setTime() {
     var timerInterval = setInterval(function() {
         secondsLeft--;
-        timerEl.textContent = secondsLeft
+        timerEl.textContent = "Time remaining: " + secondsLeft + " seconds"
      if (secondsLeft === 0) {
         clearInterval(timerInterval);
         quizEl.setAttribute("style", "display:none")

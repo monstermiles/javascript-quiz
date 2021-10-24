@@ -151,8 +151,7 @@ function endGame() {
 
 
 submitButton.addEventListener("click", addInitials)
-submitButton.addEventListener("click", addScore)
-///try making the high score list in the html and just creating and appending the lis
+
 
 
 //add initials to the high scores list by appending an li 
@@ -164,8 +163,8 @@ function addInitials(event) {
     console.log(initialsEl.value)
     highScoreList.appendChild(highScoreEl)
     highScoreEl.textContent = (initialsEl.value) + ": " + (userScore)
+    localStorage.setItem("initialsEl.value", initialsEl.value)
+    localStorage.setItem("userScore", userScore)
 }
 
-function addScore() {
-
-}
+//store initials and high scores in local storage

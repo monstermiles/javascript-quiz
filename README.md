@@ -3,5 +3,4 @@ This project is a simple quiz, made using JavaScript and CSS. The start screen d
 
 If I had more time to spend on this project, I would like to make the high scores list sort the scores as they are entered so they are displayed from highest to lowest.  I'd also like to limit the number of scores that can be stored, and have the lowest scores be removed once the max number of scores is reached.  
 
-
-![alt text](http://url/to/screenshot-1.png)
+![alt text](https://github.com/[monstermiles]/[javascript]/blob/[main]/screenshot-1.png?raw=true)

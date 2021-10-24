@@ -17,6 +17,7 @@ var secondsLeft = 30
 var questionIndex = 0
 var userScore = 0;
 var scoreEl = document.querySelector("#score")
+var highScoreContainer = document.querySelector("#high-score-container")
 var highScoreList = document.querySelector("#high-score-list")
 //array of questions 
 var quiz = [
@@ -55,11 +56,13 @@ quizEnd.setAttribute("style", "display:none")
 quizEl.setAttribute("style", "display:none")
 
 
+
 //start quiz
 startButton.addEventListener("click", startQuiz)
 
 function startQuiz() {
     quizIntro.setAttribute("style", "display:none")
+    highScoreContainer.setAttribute("style", "display:none")
     quizEl.setAttribute("style", "display:normal")
     setTime()
     displayQuestion()
@@ -145,26 +148,24 @@ function nextQuestion(event) {
 function endGame() {
     quizEnd.setAttribute("style", "display:normal")   
     quizEl.setAttribute("style", "display:none")
+    highScoreContainer.setAttribute("style", "display:normal")
     scoreEl.textContent = userScore
 
 }
 
+//add initials to the high scores list by appending an li 
 
 submitButton.addEventListener("click", addInitials)
-
-
-
-//add initials to the high scores list by appending an li 
 
 var highScoreEl = document.createElement("li")
 
 function addInitials(event) {
     event.preventDefault()
     console.log(initialsEl.value)
+    //store initials and high scores in local storage
+    localStorage.setItem("initialsEl.value-storage", initialsEl.value)
+    localStorage.setItem("userScore-storage", userScore)
     highScoreList.appendChild(highScoreEl)
-    highScoreEl.textContent = (initialsEl.value) + ": " + (userScore)
-    localStorage.setItem("initialsEl.value", initialsEl.value)
-    localStorage.setItem("userScore", userScore)
+    highScoreEl.textContent = (localStorage.getItem("initialsEl.value-storage")) + ": " + (localStorage.getItem("userScore-storage"))
 }
 
-//store initials and high scores in local storage

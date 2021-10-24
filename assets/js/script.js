@@ -58,7 +58,6 @@ quizEl.setAttribute("style", "display:none")
 startButton.addEventListener("click", startQuiz)
 
 function startQuiz() {
-    console.log("starting the quiz!")
     quizIntro.setAttribute("style", "display:none")
     quizEl.setAttribute("style", "display:normal")
     setTime()
@@ -69,7 +68,6 @@ function startQuiz() {
 
 //start timer
 function setTime() {
-    console.log("timer!")
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = secondsLeft
@@ -79,7 +77,11 @@ function setTime() {
         quizEnd.setAttribute("style", "display:normal")
         giveScore()
      } 
-    
+     //timer stops and is hidden when all questions are answered
+     if (questionIndex > 4) {
+         clearInterval(timerInterval)
+         timerEl.setAttribute("style", "display:none")
+     }
     }, 
     1000, )
 }
@@ -117,10 +119,7 @@ function nextQuestion(event) {
         userScore++
         questionIndex++
         if (questionIndex > 4) {
-            // end game
-            quizEnd.setAttribute("style", "display:normal")   
-            quizEl.setAttribute("style", "display:none")
-            timerEl = setAttribute("style", "display:none")
+            endGame()
             
         } else {
             displayQuestion()
@@ -131,11 +130,7 @@ function nextQuestion(event) {
         console.log('incorrect')
         questionIndex++
         if (questionIndex > 4) {
-            // end game
-            quizEnd.setAttribute("style", "display:normal")   
-            quizEl.setAttribute("style", "display:none")
-            timerEl = setAttribute("style", "display:none")
-            
+           endGame()
         } else {
             displayQuestion()
             displayChoices()
@@ -145,7 +140,11 @@ function nextQuestion(event) {
     
 }
 
-
+//end of game 
+function endGame() {
+    quizEnd.setAttribute("style", "display:normal")   
+    quizEl.setAttribute("style", "display:none")
+}
 
 
 

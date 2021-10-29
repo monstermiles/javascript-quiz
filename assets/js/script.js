@@ -19,6 +19,7 @@ var userScore = 0;
 var scoreEl = document.querySelector("#score")
 var highScoreContainer = document.querySelector("#high-score-container")
 var highScoreList = document.querySelector("#high-score-list")
+var userScoreArray = []
 //array of questions 
 var quiz = [
     {
@@ -54,7 +55,6 @@ var quiz = [
 //hide end div  and quiz div
 quizEnd.setAttribute("style", "display:none")
 quizEl.setAttribute("style", "display:none")
-
 
 
 //start quiz
@@ -157,16 +157,25 @@ function endGame() {
 
 submitButton.addEventListener("click", addInitials)
 
-var highScoreEl = document.createElement("li")
+
 
 function addInitials(event) {
     event.preventDefault()
     console.log(initialsEl.value)
-    //store initials and high scores in local storage
-    localStorage.setItem("initialsEl.value-storage", initialsEl.value)
-    localStorage.setItem("userScore-storage", userScore)
-    //retrieves high score and initials from storage and adds to list
-    highScoreList.appendChild(highScoreEl)
-    highScoreEl.textContent = (localStorage.getItem("initialsEl.value-storage")) + ": " + (localStorage.getItem("userScore-storage"))
+    var userObject = {
+        initials: initialsEl.value,
+        userScore
+    }
+    userScoreArray.push(userObject)
+    var stringArray = JSON.stringify(userScoreArray)
+    localStorage.setItem("data", stringArray)
+    var fetchArray = JSON.parse(localStorage.getItem("data")) 
+    for (var i = 0; i <= fetchArray.length; i++) {
+        var highScoreEl = document.createElement("li")
+        highScoreEl.textContent = fetchArray[i].initials+ " " + fetchArray[i].userScore
+        highScoreList.append(highScoreEl)
+    }
+    
+
 }
 

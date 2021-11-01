@@ -155,27 +155,31 @@ function endGame() {
 
 //add initials to the high scores list by appending an li 
 
-submitButton.addEventListener("click", addInitials)
+submitButton.addEventListener("click", storeInitialsScores)
 
 
 
-function addInitials(event) {
+function storeInitialsScores(event) {
     event.preventDefault()
     console.log(initialsEl.value)
+    //creates an object (2 key value pairs) that will go inside the userScoreArray
     var userObject = {
         initials: initialsEl.value,
-        userScore
+        userScore 
     }
+    //adds the object to the array//
     userScoreArray.push(userObject)
     var stringArray = JSON.stringify(userScoreArray)
     localStorage.setItem("data", stringArray)
     var fetchArray = JSON.parse(localStorage.getItem("data")) 
-    for (var i = 0; i <= fetchArray.length; i++) {
+    for (var i = 0; i < fetchArray.length; i++) {
         var highScoreEl = document.createElement("li")
         highScoreEl.textContent = fetchArray[i].initials+ " " + fetchArray[i].userScore
         highScoreList.append(highScoreEl)
     }
     
-
 }
+
+
+
 

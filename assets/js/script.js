@@ -52,9 +52,11 @@ var quiz = [
 ];
 
 
+
 //hide end div  and quiz div
 quizEnd.setAttribute("style", "display:none")
 quizEl.setAttribute("style", "display:none")
+
 
 
 //start quiz
@@ -159,27 +161,29 @@ submitButton.addEventListener("click", storeInitialsScores)
 
 
 
-function storeInitialsScores(event) {
+function storeInitialsScores(){
     event.preventDefault()
+    var fetchArray = JSON.parse(localStorage.getItem("data")) || []
+    
     console.log(initialsEl.value)
-    //creates an object (2 key value pairs) that will go inside the userScoreArray
+    //creates an object that will go inside the userScoreArray
     var userObject = {
         initials: initialsEl.value,
         userScore 
     }
     //adds the object to the array//
-    userScoreArray.push(userObject)
-    var stringArray = JSON.stringify(userScoreArray)
-    localStorage.setItem("data", stringArray)
-    var fetchArray = JSON.parse(localStorage.getItem("data")) 
+    // userScoreArray.push(userObject)
+    // var stringArray = JSON.stringify(userScoreArray)
+    // localStorage.setItem("data", stringArray)
+    
     for (var i = 0; i < fetchArray.length; i++) {
         var highScoreEl = document.createElement("li")
         highScoreEl.textContent = fetchArray[i].initials+ " " + fetchArray[i].userScore
+        var scoreList = document.getElementById("#high-score-list")
         highScoreList.append(highScoreEl)
+
     }
     
 }
 
-
-
-
+storeInitialsScores()
